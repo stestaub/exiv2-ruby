@@ -12,28 +12,28 @@ describe 'Exiv2::Image' do
     # noinspection RubyArgCount
     let(:image) {Exiv2::Image.new}
 
-    it 'should be possible to open_file image file' do
-      expect{image.open_file('spec/fixtures/strom.jpg')}.not_to raise_error
+    it 'should be possible to open image file' do
+      expect{image.open('spec/fixtures/strom.jpg')}.not_to raise_error
     end
 
     it 'should read mime type from image' do
-      image.open_file 'spec/fixtures/strom.jpg'
+      image.open 'spec/fixtures/strom.jpg'
       image.read_metadata
       expect(image.mime_type).to eq 'image/jpeg'
     end
 
     it 'should return the full file path' do
-      image.open_file 'spec/fixtures/strom.jpg'
+      image.open 'spec/fixtures/strom.jpg'
       expect(image.path).to eq 'spec/fixtures/strom.jpg'
     end
 
     it 'should only return the file name' do
-      image.open_file 'spec/fixtures/strom.jpg'
+      image.open 'spec/fixtures/strom.jpg'
       expect(image.file_name).to eq 'strom.jpg'
     end
 
     it 'should extract all previews' do
-      image.open_file 'spec/fixtures/DSC_0022.NEF'
+      image.open 'spec/fixtures/DSC_0022.NEF'
       image.read_metadata
       image.extract_all_previews 'tmp/previews/'
 

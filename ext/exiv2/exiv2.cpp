@@ -16,7 +16,7 @@ void Init_exiv2(void)
     rb_cImage =
       define_class_under<Image>(rb_mExiv2, "Image")
       .define_constructor(Constructor<Image>())
-      .define_method("open_file", &Image::open)
+      .define_method("open", &Image::open)
       .define_method("path", &Image::file_name)
       .define_method("read_metadata", &Image::read_metadata)
       .define_method("mime_type", &Image::mime_type)
