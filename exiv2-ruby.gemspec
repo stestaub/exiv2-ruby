@@ -27,8 +27,9 @@ Gem::Specification.new do |spec|
 
   spec.extensions << 'ext/exiv2/extconf.rb'
 
-  spec.add_development_dependency 'rice'
-  spec.add_development_dependency "bundler", "~> 1.9"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rake-compiler"
+  spec.add_development_dependency 'rice', '~> 2.1'
+  spec.add_development_dependency 'bundler', '~> 1.9'
+  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake-compiler', '~> 0.9.5'
+  spec.add_development_dependency 'rspec', '~> 3.4.0'
 end

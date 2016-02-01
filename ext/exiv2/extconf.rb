@@ -7,7 +7,4 @@ RbConfig::MAKEFILE_CONFIG['CXXFLAGS'] = ENV['CXXFLAGS'] if ENV['CXXFLAGS']
 
 dir_config('exiv2')
 have_library('exiv2')
-
-extension_name = 'exiv2'
-dir_config(extension_name)
 create_makefile('exiv2/exiv2')
