@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Stefan Staub"]
   spec.email         = ["ste.staub@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Wraps the exiv2 library to Ruby}
+  spec.description   = %q{Wraps the exiv2 library to Ruby by using Rice.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -21,12 +21,14 @@ Gem::Specification.new do |spec|
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.files         =  Dir.glob("ext/**/*.{c,cpp,rb}") +
+                        Dir.glob("lib/**/*.rb")
   spec.require_paths = ["lib"]
+
+  spec.extensions << 'ext/exiv2/extconf.rb'
 
   spec.add_development_dependency 'rice'
   spec.add_development_dependency "bundler", "~> 1.9"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake-compiler"
 end
