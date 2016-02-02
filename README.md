@@ -1,4 +1,5 @@
 # Exiv2::Ruby
+[![Build Status](https://travis-ci.org/stestaub/exiv2-ruby.svg?branch=master)](https://travis-ci.org/stestaub/exiv2-ruby)
 
 A Ruby wrapper for the awesome [exiv2](http://www.exiv2.org/) library. The goal of this gem is to provide easy access to most of the exiv2 libraries API, but most importantly, to preview extraction and reading/writing metadata.
 
