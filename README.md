@@ -1,7 +1,10 @@
 # Exiv2::Ruby
 [![Build Status](https://travis-ci.org/stestaub/exiv2-ruby.svg?branch=master)](https://travis-ci.org/stestaub/exiv2-ruby)
 
-A Ruby wrapper for the awesome [exiv2](http://www.exiv2.org/) library. The goal of this gem is to provide easy access to most of the exiv2 libraries API, but most importantly, to preview extraction and reading/writing metadata.
+A Ruby wrapper for the awesome [exiv2](http://www.exiv2.org/) library. The goal of this gem is to provide easy access to most of the exiv2 libraries API,
+but most importantly, to extract previews of camara raw files.
+
+At the moment, only raw file extraction and some basic file information is implemented.
 
 ## Installation
 
@@ -21,7 +24,46 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    require 'exiv2-ruby'
+    
+    image = Exiv2::Image.new
+    
+    # open an image raw file
+    image.open 'path/to/image.nef'
+    
+    # get information about the file
+    image.path
+    #=> "path/to/image.nef"
+    image.mime_type
+    #=> "image/x-nikon-nef"
+    
+    # extract previews
+    # will create files (some/location/_preview1.tif, some/location/_preview2.jpg, ...)
+    image.extract_all_previews('some/location/', '_preview')
+    
+    # Get information about previews
+    preview = image.previews.first
+    preview.mime_type
+    #=> "image/tiff"
+    preview.extension
+    #=> ".tif"
+    preveiw.size
+    #=> 57600
+    "#{preview.width}px x #{preview.height}px"
+    #=> "160px x 120px"
+    
+    # Extract single preview
+    # creates a file 'path/to/extract/file_name.tif'
+    image.extract_preview(preview, 'path/to/extract/file_name')
+
+## What's coming next
+This is a very alpha version, so not much is implemented so far. The following is planed for future versions:
+
+* Support Read/Write Exiv, XMP and other metadata
+* Better Error Handling
+* Improve documentation (inline docs)
+* Fallback to raw rendering for previews if no previews embedded
+* Support for Carrierwave
 
 ## Development
 
