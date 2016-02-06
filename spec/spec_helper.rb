@@ -17,6 +17,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'exiv2'
+require 'fileutils'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -40,6 +41,13 @@ RSpec.configure do |config|
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
+  end
+
+  config.before(:suite) do
+    dirname = File.dirname 'tmp/rspec/previews/*'
+    unless File.directory?(dirname)
+      FileUtils.mkdir_p(dirname)
+    end
   end
 
   # clean tmp files after specs that specify :clean_tmp

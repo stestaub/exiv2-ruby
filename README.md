@@ -22,39 +22,44 @@ Or install it yourself as:
 
     $ gem install exiv2-ruby
 
-## Usage
+Be sure to have the exiv2 dev libraries installed:
 
-    require 'exiv2-ruby'
-    
-    image = Exiv2::Image.new
-    
-    # open an image raw file
-    image.open 'path/to/image.nef'
-    
-    # get information about the file
-    image.path
-    #=> "path/to/image.nef"
-    image.mime_type
-    #=> "image/x-nikon-nef"
-    
-    # extract previews
-    # will create files (some/location/_preview1.tif, some/location/_preview2.jpg, ...)
-    image.extract_all_previews('some/location/', '_preview')
-    
-    # Get information about previews
-    preview = image.previews.first
-    preview.mime_type
-    #=> "image/tiff"
-    preview.extension
-    #=> ".tif"
-    preveiw.size
-    #=> 57600
-    "#{preview.width}px x #{preview.height}px"
-    #=> "160px x 120px"
-    
-    # Extract single preview
-    # creates a file 'path/to/extract/file_name.tif'
-    image.extract_preview(preview, 'path/to/extract/file_name')
+    $ sudo apt-get install -y exiv2 libexiv2-dev
+
+## Usage
+```ruby
+require 'exiv2-ruby'
+
+image = Exiv2::Image.new
+
+# open an image raw file
+image.open 'path/to/image.nef'
+
+# get information about the file
+image.path
+#=> "path/to/image.nef"
+image.mime_type
+#=> "image/x-nikon-nef"
+
+# extract previews
+# will create files (some/location/_preview1.tif, some/location/_preview2.jpg, ...)
+image.extract_all_previews('some/location/', '_preview')
+
+# Get information about previews
+preview = image.previews.first
+preview.mime_type
+#=> "image/tiff"
+preview.extension
+#=> ".tif"
+preveiw.size
+#=> 57600
+"#{preview.width}px x #{preview.height}px"
+#=> "160px x 120px"
+
+# Extract single preview
+# creates a file 'path/to/extract/file_name.tif'
+image.extract_preview(preview, 'path/to/extract/file_name')
+```
 
 ## What's coming next
 This is a very alpha version, so not much is implemented so far. The following is planed for future versions:
