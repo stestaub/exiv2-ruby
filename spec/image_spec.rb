@@ -66,7 +66,7 @@ describe Exiv2::Image do
         end
 
         it 'first elements should have id' do
-          expect(previews.first.id).to eq 15
+          expect(previews.first.id).to be > 0
         end
 
         it 'first element should have width and height' do

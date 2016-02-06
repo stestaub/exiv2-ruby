@@ -44,10 +44,7 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    dirname = File.dirname 'tmp/rspec/previews/*'
-    unless File.directory?(dirname)
-      FileUtils.mkdir_p(dirname)
-    end
+    FileUtils.mkdir_p('tmp/rspec/previews')
   end
 
   # clean tmp files after specs that specify :clean_tmp
