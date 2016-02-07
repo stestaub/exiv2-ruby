@@ -64,7 +64,7 @@ class Exiv2::Image
 
   # Opens a file and reads its metadata.
   #
-  # @param [String] file_path The path to the image
+  # @param [String | Pathname] file_path The path to the image
   #
   def open(file_path)
     raise NotImplementedError.new 'This is only a function body for documentation'

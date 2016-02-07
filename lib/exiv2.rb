@@ -12,4 +12,5 @@ require 'exiv2/exiv2'
 #
 # See {Exiv2::Image} for example usage.
 module Exiv2
+
 end

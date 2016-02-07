@@ -1,17 +1,13 @@
 describe Exiv2::Image do
-  it 'should be a class' do
-    expect(Exiv2::Image.class).to be_a(Class)
-  end
-
-  it 'should be possible to instantiate' do
-    # noinspection RubyArgCount
-    expect{Exiv2::Image.new}.not_to raise_error
-  end
 
   describe 'instance' do
 
     it 'should be possible to open image file' do
       expect{subject.open('spec/fixtures/strom.jpg')}.not_to raise_error
+    end
+
+    it 'should handle path name in open method' do
+      expect{subject.open(Pathname.new('spec/fixtures/strom.jpg'))}.not_to raise_error
     end
 
     it 'should read mime type from image' do

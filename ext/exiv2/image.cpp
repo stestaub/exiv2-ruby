@@ -3,6 +3,7 @@
 #include <vector>
 #include "rice/Data_Type.hpp"
 #include "rice/Array.hpp"
+#include "rice/String.hpp"
 
 using namespace Rice;
 namespace
@@ -22,10 +23,12 @@ namespace
       Exiv2::XmpParser::terminate();
     }
 
-    void open(std::string path) {
-      Exiv2::Image::AutoPtr img_ptr = Exiv2::ImageFactory::open(path);
+    /* We accept object and convert it to string to also support Pathnames */
+    void open(Object _path) {
+      String path = _path.to_s();
+      Exiv2::Image::AutoPtr img_ptr = Exiv2::ImageFactory::open(path.str());
       image = img_ptr.release();
-      file = path;
+      file = path.str();
       read_metadata();
     }
 
