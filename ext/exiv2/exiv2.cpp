@@ -4,6 +4,7 @@
 #include "rice/Constructor.hpp"
 #include "rice/String.hpp"
 
+// Preview Properties ------------------------------------------------------
 static std::string previewExtension(Exiv2::PreviewProperties self) {
   return self.extension_;
 }
@@ -27,6 +28,8 @@ static int previewWidth(Exiv2::PreviewProperties self) {
 static int previewHeight(Exiv2::PreviewProperties self) {
   return self.height_;
 }
+// End - Preview Properties -------------------------------------------------
+
 
 extern "C"
 void Init_exiv2(void)
