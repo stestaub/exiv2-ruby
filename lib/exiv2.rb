@@ -2,6 +2,11 @@ require 'exiv2/version'
 require 'exiv2/image'
 require 'exiv2/preview'
 
+require 'exiv2/shared_methods'
+require 'exiv2/iptc_data'
+require 'exiv2/exif_data'
+require 'exiv2/xmp_data'
+
 # include the native extension
 require 'exiv2/exiv2'
 

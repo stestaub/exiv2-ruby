@@ -64,7 +64,7 @@ image.extract_preview(preview, 'path/to/extract/file_name')
 ## What's coming next
 This is a very alpha version, so not much is implemented so far. The following is planed for future versions:
 
-* Support Read/Write Exiv, XMP and other metadata
+* Support Read/Write Exif, XMP and IPTC data
 * Better Error Handling
 * Improve documentation (inline docs)
 * Fallback to raw rendering for previews if no previews embedded

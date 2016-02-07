@@ -67,8 +67,23 @@ namespace
       return *new Array(prevPropList.begin(), prevPropList.end());
     }
 
+    Exiv2::ExifData exif_data( void ) {
+      return image->exifData();
+    }
+
+    Exiv2::IptcData iptc_data( void ) {
+      return image->iptcData();
+    }
+
+    Exiv2::XmpData xmp_data( void ) {
+      return image->xmpData();
+    }
+
   };
 
+  Data_Type<Exiv2::ExifData> rb_cExifData;
+  Data_Type<Exiv2::IptcData> rb_cIptcData;
+  Data_Type<Exiv2::XmpData> rb_cXmpData;
   Data_Type<Image> rb_cImage;
   Data_Type<Exiv2::PreviewProperties> rb_cPreviewImage;
 
