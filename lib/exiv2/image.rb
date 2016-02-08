@@ -113,4 +113,28 @@ class Exiv2::Image
     raise NotImplementedError.new 'This is only a function body for documentation'
   end
 
+  # Returns an {ExifData} object which is an enumerable and allows to access
+  # each exif key value pair.
+  #
+  # @return [ExifData]
+  def exif_data
+    raise NotImplementedError.new 'This is only a function body for documentation'
+  end
+
+  # Returns an {XmpData} object which is an enumerable and allows to access
+  # each xmp key value pair.
+  #
+  # @return [XmpData]
+  def xmp_data
+    raise NotImplementedError.new 'This is only a function body for documentation'
+  end
+
+  # Returns an {IptcData} object which is an enumerable and allows to access
+  # each iptc key value pair.
+  #
+  # @return [IptcData]
+  def iptc_data
+    raise NotImplementedError.new 'This is only a function body for documentation'
+  end
+
 end

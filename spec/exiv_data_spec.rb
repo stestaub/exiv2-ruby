@@ -1,3 +1,4 @@
+require 'benchmark'
 describe 'Exiv Data' do
 
   subject do
@@ -15,6 +16,23 @@ describe 'Exiv Data' do
       end
       expect(description).to eq('UTF-8 description. ☃ł㌎')
     end
+
+  end
+
+  describe 'performance' do
+    let(:n) { 1 }
+
+    it 'should be faster with find' do
+      # This is very interesting. It is only faster when
+      # executing about thousand times. for single executions
+      # bracket access is faster
+      Benchmark.bm(10) do |x|
+        x.report('find:') { n.times {subject.find { |k, v| k == 'Exif.Image.DateTimeOriginal' }} }
+        x.report('bracket:') { n.times {subject['Exif.Image.DateTimeOriginal']} }
+        x.report('to_hash:') { n.times {subject.to_hash} }
+      end
+    end
+
 
   end
 

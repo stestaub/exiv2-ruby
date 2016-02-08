@@ -4,7 +4,7 @@
 A Ruby wrapper for the awesome [exiv2](http://www.exiv2.org/) library. The goal of this gem is to provide easy access to most of the exiv2 libraries API,
 but most importantly, to extract previews of camara raw files.
 
-At the moment, only raw file extraction and some basic file information is implemented.
+At the moment, only raw file extraction and reading exif, iptc and xmp data is possible.
 
 ## Installation
 
@@ -28,7 +28,7 @@ Be sure to have the exiv2 dev libraries installed:
 
 ## Usage
 ```ruby
-require 'exiv2-ruby'
+require 'exiv2'
 
 image = Exiv2::Image.new
 
@@ -61,25 +61,40 @@ preveiw.size
 image.extract_preview(preview, 'path/to/extract/file_name')
 ```
 
+### Accessing Meta Data
+Metadata of images can be accessed by the methods Image#exif_data, Image#xmp_data and Image#iptc_data. The Method returns
+an enumerator that allows to access the key value pairs of the corresponding type.
+
+Example:
+
+```ruby
+image.exif_data.each do |key, value|
+  print "#{key}: #{value}\n"
+end
+
+image.exif_data.each { ... }
+image.xmp_data.each { ... }
+
+iptc_data_hash  = image.iptc_data.to_hash
+xmp_data_hash   = image.xmp_data.to_hash
+```
+
 ## What's coming next
 This is a very alpha version, so not much is implemented so far. The following is planed for future versions:
 
-* Support Read/Write Exif, XMP and IPTC data
+* Support write Exif, XMP and IPTC data
 * Better Error Handling
-* Improve documentation (inline docs)
 * Fallback to raw rendering for previews if no previews embedded
 * Support for Carrierwave
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
 1. Fork it ( https://github.com/stestaub/exiv2-ruby/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
 5. Create a new Pull Request
+
+
+## Credits
+The way metadata is accessed is heavily inspired by [https://github.com/envato/exiv2], but ported to use Rice.
