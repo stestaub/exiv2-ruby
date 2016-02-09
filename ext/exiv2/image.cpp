@@ -25,6 +25,7 @@ namespace
 
     /* We accept object and convert it to string to also support Pathnames */
     void open(Object _path) {
+      delete image;
       String path = _path.to_s();
       Exiv2::Image::AutoPtr img_ptr = Exiv2::ImageFactory::open(path.str());
       image = img_ptr.release();

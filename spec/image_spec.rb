@@ -23,6 +23,12 @@ describe Exiv2::Image do
     expect(subject.file_name).to eq 'strom.jpg'
   end
 
+  it 'should be possible to call open multiple times' do
+    subject.open 'spec/fixtures/DSC_0022.NEF'
+    subject.open 'spec/fixtures/strom.jpg'
+    expect(subject.file_name).to eq 'strom.jpg'
+  end
+
   describe 'Previews' do
     before do
       subject.open 'spec/fixtures/DSC_0022.NEF'
