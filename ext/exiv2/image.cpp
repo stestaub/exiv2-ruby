@@ -35,6 +35,7 @@ namespace
 
     void destroy(void) {
       delete image;
+      image = NULL;
       Exiv2::XmpParser::terminate();
     }
 
