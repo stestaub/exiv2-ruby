@@ -55,6 +55,8 @@ class Exiv2::Image
   #     image.extract_preview preview, 'previews/lake'
   #     #=> writes preview/lake.jpg
   #
+  #     image.destroy!
+  #
   # @param [Preview] preview_properties The previews properties that should be extracted.
   # @param [String] path The path, including the file name but not its extension.
   #
@@ -134,6 +136,13 @@ class Exiv2::Image
   #
   # @return [IptcData]
   def iptc_data
+    raise NotImplementedError.new 'This is only a function body for documentation'
+  end
+
+  # Frees the allocated memory. Operations on the image can not be performed anymore
+  # Only path/filename methods will work after the image is destroyed
+  #
+  def destroy!
     raise NotImplementedError.new 'This is only a function body for documentation'
   end
 

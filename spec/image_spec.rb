@@ -29,6 +29,12 @@ describe Exiv2::Image do
     expect(subject.file_name).to eq 'strom.jpg'
   end
 
+  it 'should be possible to access path after destroying image' do
+    subject.open 'spec/fixtures/DSC_0022.NEF'
+    subject.destroy!
+    expect(subject.file_name).to eq 'DSC_0022.NEF'
+  end
+
   describe 'Previews' do
     before do
       subject.open 'spec/fixtures/DSC_0022.NEF'

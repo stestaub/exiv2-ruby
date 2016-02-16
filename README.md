@@ -59,6 +59,9 @@ preveiw.size
 # Extract single preview
 # creates a file 'path/to/extract/file_name.tif'
 image.extract_preview(preview, 'path/to/extract/file_name')
+
+# free the memory
+image.destroy!
 ```
 
 ### Accessing Meta Data

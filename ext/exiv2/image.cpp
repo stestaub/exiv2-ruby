@@ -19,18 +19,23 @@ namespace
     Exiv2::PreviewPropertiesList prevPropList;
 
     ~Image() {
-      delete image;
-      Exiv2::XmpParser::terminate();
+      destroy();
     }
 
     /* We accept object and convert it to string to also support Pathnames */
     void open(Object _path) {
-      delete image;
+      destroy(); // destroy any previously loaded image
+
       String path = _path.to_s();
       Exiv2::Image::AutoPtr img_ptr = Exiv2::ImageFactory::open(path.str());
       image = img_ptr.release();
       file = path.str();
       read_metadata();
+    }
+
+    void destroy(void) {
+      delete image;
+      Exiv2::XmpParser::terminate();
     }
 
     std::string file_name(void) {
